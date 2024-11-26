@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:48:42 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/23 20:01:22 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/11 20:34:14 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/15 18:38:58 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+size_t	ft_strlen(const char *s)
 {
-	size_t	little_len;
-	size_t	i;
+	int	len;
 
-	little_len = ft_strlen(little);
-	i = 0;
-	if (little_len == 0)
-		return ((char *)big);
-	while (i <= len - little_len)
+	len = 0;
+	while (s[len] != '\0')
 	{
-		if (ft_strncmp(big + i, little, little_len) == 0)
-			return ((char *)(big + i));
-		i++;
+		len++;
 	}
-	return (NULL);
+	return (len);
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char *str = "aiueo";
+	unsigned int length = ft_strlen(str);
+	printf("The length of %s is %d.", str, length);
+	return (0);
+}*/

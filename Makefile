@@ -1,31 +1,47 @@
-#Some rules
-# $ sign is used to reference variables in Makefile
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/11 18:14:53 by cyamauch          #+#    #+#              #
+#    Updated: 2024/11/23 21:06:49 by cyamauch         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Variables
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror
-SRC = $(wildcard *.c) # wildcard is a function that automatically collect files matching certain patterns
 
-OBJ = $(SRC: .c=.o) # converts  all .c files in SRC to .o files
-NAME = libft.a # final executable
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+       ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c \
+       ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c \
+       ft_calloc.c ft_strdup.c ft_toupper.c ft_tolower.c \
+       ft_strchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
+       ft_strnstr.c ft_atoi.c ft_strrchr.c ft_substr.c \
+       ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
+       ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
+       ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-# Rules
-# target: dependencies
-	# action
-all: $(NAME) # compile all the library(libft.a)
+OBJ = $(SRCS:.c =.o)
 
-# compilation and linking rule
-$(NAME): $(OBJ) # creates the static library using ar rcs = Link all objects files into the final program
-		ar rcs $(NAME) $(OBJ)
+NAME = libft.a
 
-# rule to compile(build) .c to .o
-%.o: %.c libft.h # Target: %.o(want to generate)   Prerequisite: %.c(want to compile)
-		$(CC) $(CFLAGS) -c $< -o $@  # $<:Prerequisite file $@ target file
-		
-clean:  # removes objects files
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+	
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
 	rm -f $(NAME)
 	
-fclean: clean #removes both objects files and the static library
-	rm -f $(NAME)
-	
-re: fclean all #cleans and rebuilds everything
+re: fclean all
+
+.PHONY: all clean fclean re

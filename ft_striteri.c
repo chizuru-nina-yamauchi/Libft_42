@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 17:40:24 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/13 19:19:33 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/25 16:51:40 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/25 16:54:02 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned char	*p;
-	unsigned char	value;
+	unsigned int	i;
 
-	p = (unsigned char *)s;
-	value = (unsigned char)c;
-	while (n--)
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
 	{
-		*p = value;
-		p++;
+		f(i, &s[i]);
+		i++;
 	}
-	return (s);
 }
 /*
 #include <stdio.h>
-
+void	my_func(unsigned int i, char *arr)
+{
+	if (i % 2 == 0)
+	{
+		*arr = ft_toupper(*arr);
+	}else
+	{
+		*arr = ft_tolower(*arr);
+	}
+}
 int	main()
 {
-	char arr[] = "Donde esta el bano?";
-	char ch = 'h';
-	ft_memset(arr + 6, ch, 6*sizeof(char));
-	printf("Before: %s\n", "Donde esta el bano?");
-	printf("After memset: %s\n", arr);
-	return (0);	
-}
-*/
+	char	arr1[] = "Hellooooooooo";
+	printf("Original string: %s\n", arr1);
+	ft_striteri(arr1, my_func);
+	printf("The modified string: %s\n", arr1);
+	return (0);
+}*/

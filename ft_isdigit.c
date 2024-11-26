@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:48:42 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/23 20:01:22 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/11 19:11:12 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/11 19:39:06 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_isdigit(int c)
 {
-	size_t	little_len;
-	size_t	i;
-
-	little_len = ft_strlen(little);
-	i = 0;
-	if (little_len == 0)
-		return ((char *)big);
-	while (i <= len - little_len)
-	{
-		if (ft_strncmp(big + i, little, little_len) == 0)
-			return ((char *)(big + i));
-		i++;
-	}
-	return (NULL);
+	return ('0' <= c && c <= '9');
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char ch = 's';
+	if (ft_isdigit(ch))
+	{
+		printf("It is a digit");
+	}else
+	{
+		printf("It is not adigit");
+	}
+
+	return (0);
+}*/

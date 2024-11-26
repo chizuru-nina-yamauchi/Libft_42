@@ -1,30 +1,25 @@
-/*
-stes a block of memory to zero('\0' null terminator).
-Similar to memset but always sets bytes to zero
-- erases the data in the n bytes of the memory starting at the location pointed to by s
-But memset is standard
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 19:25:25 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/23 19:29:49 by cyamauch         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void ft_bzero(void *s, size_t len)
+void	ft_bzero(void *s, size_t len)
 {
-	unsigned char *ptr = s;
-	
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
 	while (len--)
 	{
 		*ptr = 0;
 		ptr++;
 	}
-}
-
-#include <stdio.h>
-int main()
-{
-    char src_arr[] = "Herzlich Glückbunsch zum Geburstag.";
-    printf("Before: %s\n", src_arr);
-    ft_bzero(src_arr, 5);
-    printf("After:'whatever the answer is only empty string will be printed because of the null terminator' %s\n", src_arr);
-    return (0);
-
 }

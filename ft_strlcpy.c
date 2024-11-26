@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:48:42 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/23 20:01:22 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/15 19:31:25 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/15 20:10:10 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	little_len;
 	size_t	i;
 
-	little_len = ft_strlen(little);
+	if (size == 0)
+		return (ft_strlen(src));
 	i = 0;
-	if (little_len == 0)
-		return ((char *)big);
-	while (i <= len - little_len)
+	while (size - 1 > i && src[i] != '\0')
 	{
-		if (ft_strncmp(big + i, little, little_len) == 0)
-			return ((char *)(big + i));
+		dst[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char	src[] = "Muy bien!";
+	char	dest[20];
+
+	size_t len = ft_strlcpy(dest, src, 9);
+	printf("The copied string: %s\n", dest);
+	printf("Length of source string: %zu\n", len);
+
+	return (0);
+}*/

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:48:42 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/23 20:01:22 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/24 20:44:48 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/24 20:53:36 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	little_len;
-	size_t	i;
-
-	little_len = ft_strlen(little);
-	i = 0;
-	if (little_len == 0)
-		return ((char *)big);
-	while (i <= len - little_len)
-	{
-		if (ft_strncmp(big + i, little, little_len) == 0)
-			return ((char *)(big + i));
-		i++;
-	}
-	return (NULL);
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
+/*
+#include <stdio.h>
+
+int	main()
+{
+	ft_putendl_fd("Avente", 1);
+	return 0;
+}*/

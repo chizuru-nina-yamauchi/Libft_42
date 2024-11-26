@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyamauch <cyamauch@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:48:42 by cyamauch          #+#    #+#             */
-/*   Updated: 2024/11/23 20:01:22 by cyamauch         ###   ########.fr       */
+/*   Created: 2024/11/24 20:54:48 by cyamauch          #+#    #+#             */
+/*   Updated: 2024/11/24 21:21:11 by cyamauch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	little_len;
-	size_t	i;
-
-	little_len = ft_strlen(little);
-	i = 0;
-	if (little_len == 0)
-		return ((char *)big);
-	while (i <= len - little_len)
+	int	digit;
+	if (n == INT_MIN)
 	{
-		if (ft_strncmp(big + i, little, little_len) == 0)
-			return ((char *)(big + i));
-		i++;
+		write(fd, "-", 1);
+		write(fd, "2", 1);
+		n = 147483648;
 	}
-	return (NULL);
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	digit = (n % 10) + '0';
+	write(fd, &digit, 1);
+	
 }
+/*
+#include <stdio.h>
+
+int	main()
+{
+	ft_putnbr_fd(-2147483648, 1);
+	return 0;
+}*/
