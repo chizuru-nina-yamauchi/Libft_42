@@ -34,11 +34,3 @@ void	ft_putnbr_fd(int n, int fd)
 	write(fd, &digit, 1);
 	
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	ft_putnbr_fd(-2147483648, 1);
-	return 0;
-}*/

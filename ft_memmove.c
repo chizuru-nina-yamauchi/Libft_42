@@ -38,15 +38,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	*arr1 = "Sehr geehrte Damen und Herren, ";
-	char 	arr2[30];
-	size_t	byte = 10;
-	ft_memmove(arr2, arr1, byte);
-	printf("The memory was moved from src '%s' for %zu characters: %s", arr1, byte, arr2);
-	return (0);
-}*/

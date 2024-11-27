@@ -27,16 +27,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	src[] = "Muy bien!";
-	char	dest[20];
-
-	size_t len = ft_strlcpy(dest, src, 9);
-	printf("The copied string: %s\n", dest);
-	printf("Length of source string: %zu\n", len);
-
-	return (0);
-}*/

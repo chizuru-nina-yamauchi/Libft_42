@@ -59,16 +59,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * result);
 }
-/*
-#include <stdlib.h>
-#include <stdio.h>
-int	main()
-{
-	char	*arr = " -8765ahous978";
-	int	default_result = atoi(arr);
-	int	result = ft_atoi(arr);
-	printf("The default atoi result: %d\n", default_result);
-	printf("The created atoi result: %d\n", result);
-	return (0);
-
-}*/

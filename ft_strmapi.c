@@ -31,23 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-/*
-#include <stdio.h>
-
-char	example_function(unsigned int i, char c)
-{
-	if (i % 2 == 0)
-	{
-		return (char)ft_toupper(c);  // convert to uppercase if index is even
-	}
-	return c; // leave the character unchanged if index is odd
-}
-
-int	main()
-{
-	char	*s = "ayayayayayay";
-	char	*new_string = ft_strmapi(s, example_function);
-	printf("The string '%s' becomes: %s\n", s, new_string);
-	free(new_string);
-	return (0); 
-}*/

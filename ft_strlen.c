@@ -23,12 +23,3 @@ size_t	ft_strlen(const char *s)
 	}
 	return (len);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char *str = "aiueo";
-	unsigned int length = ft_strlen(str);
-	printf("The length of %s is %d.", str, length);
-	return (0);
-}*/

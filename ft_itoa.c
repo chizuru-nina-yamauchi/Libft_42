@@ -68,12 +68,3 @@ char	*ft_itoa(int n)
 	}
 	return (create);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	int	number = -2147483648;
-	char *arr = ft_itoa(number);
-	printf("The number printed as a char array with malloc:\n%s\n", arr);
-	return 0;
-}*/

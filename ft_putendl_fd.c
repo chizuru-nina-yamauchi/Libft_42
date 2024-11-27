@@ -17,11 +17,3 @@ void	ft_putendl_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	ft_putendl_fd("Avente", 1);
-	return 0;
-}*/

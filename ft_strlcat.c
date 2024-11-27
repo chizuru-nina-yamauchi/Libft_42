@@ -33,15 +33,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	src[] = "Soy japonesa.";
-	char	dst[] = "Ich bin gerade mit dem Ubahn angekommen.";
-	size_t	len = ft_strlcat(dst, src, 50);
-	printf("The concatinated string: %s\n", dst);
-	printf("The length of initial length of dst + src: %zu\n", len);
-	return (0);
-}
-*/

@@ -106,23 +106,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (result);
 }
-
-#include <stdio.h>
-
-int	main()
-{
-	char	arr[] = "hi,hoy,ay,yay,boy";
-	char	**each_word = ft_split(arr, ',');
-	size_t	i = 0;
-	if (each_word)
-	{
-		while (each_word[i])
-		{
-			printf("index of %zu: word: %s\n", i, each_word[i]);
-			free(each_word[i]);
-			i++;
-		}
-		free(each_word);
-	}
-	return (0);
-}

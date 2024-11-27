@@ -31,22 +31,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char *arr1 = "ABCDEH";
-	char *arr2 = "ABCDEFG";
-	int	result = ft_strncmp(arr1, arr2, 8);
-	if (result == 0)
-	{
-		printf("They are equal.");
-	}else if (result > 0)
-	{
-		printf("arr1 is bigger than arr2");
-	}else
-	{
-		printf("arr1 is smaller than arr2");
-	}
-	return (0);
-}*/

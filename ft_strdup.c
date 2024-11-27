@@ -50,14 +50,3 @@ char	*ft_strdup(const char *s)
 	ft_strcpy(dup, s);
 	return (dup);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char *original = "Ich lerne die Programmierugssprache C.";
-	char *duplicate = ft_strdup(original);
-	printf("It is duplicated: %s", duplicate);
-	free(duplicate);
-	return (0);
-}*/

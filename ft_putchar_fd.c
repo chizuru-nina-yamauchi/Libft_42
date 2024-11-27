@@ -16,10 +16,3 @@ void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	ft_putchar_fd('i', 1);
-	return 0;
-}*/

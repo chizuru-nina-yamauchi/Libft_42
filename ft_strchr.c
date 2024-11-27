@@ -27,12 +27,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	*arr = "aiueoTEST";
-	char	c = 'o';
-	printf("There is %s",ft_strchr(arr,c));
-}
-*/

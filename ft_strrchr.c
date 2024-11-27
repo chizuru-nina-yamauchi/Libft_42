@@ -31,12 +31,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char *arr = "Latte Machiato con leche de avena por favor";
-	char ch = 'o';
-	printf("Last occurence of %c is %s", ch , ft_strrchr(arr, ch));
-	return (0);
-}*/

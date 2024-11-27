@@ -16,10 +16,3 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	ft_putstr_fd("Ayayay", 1);
-}*/

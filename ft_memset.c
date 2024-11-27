@@ -26,16 +26,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char arr[] = "Donde esta el bano?";
-	char ch = 'h';
-	ft_memset(arr + 6, ch, 6*sizeof(char));
-	printf("Before: %s\n", "Donde esta el bano?");
-	printf("After memset: %s\n", arr);
-	return (0);	
-}
-*/

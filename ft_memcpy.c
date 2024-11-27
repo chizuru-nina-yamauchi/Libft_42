@@ -27,13 +27,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	const char src_arr[] = "Die Vergangenheit";
-	char dst_arr[30];
-	ft_memcpy(dst_arr, src_arr, 7 * sizeof(char));
-	printf("'%s' is copied from src '%s'.", dst_arr, src_arr);
-	return 0;
-}*/

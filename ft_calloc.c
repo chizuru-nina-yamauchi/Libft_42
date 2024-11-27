@@ -24,18 +24,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_memset(ptr, 0, total_size);
 	return (ptr);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	int	*arr = (int *)ft_calloc(5,sizeof(int));
-	if (arr != NULL)
-	{
-		printf("Array pointer: %p\n", (void *)arr);
-		free(arr);
-	}else
-	{
-		printf("Memory allocation failed");
-	}
-	return (0);
-}*/

@@ -20,11 +20,3 @@ int	ft_tolower(int c)
 	}
 	return (c);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char ch = 'U';
-	printf("%c becomes %c", ch, ft_tolower(ch));
-	return (0);
-}*/

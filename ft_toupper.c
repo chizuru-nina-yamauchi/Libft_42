@@ -20,11 +20,3 @@ int	ft_toupper(int c)
 	}
 	return (c);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char s = 'o';
-	printf("%c becomes %c", s, ft_toupper(s));
-	return (0);
-}*/

@@ -16,17 +16,3 @@ int	ft_isprint(int c)
 {
 	return (c >= 32 && c < 127);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char ch = ' ';
-	if (ft_isprint(ch))
-	{
-		printf("Ascii %d is printable", ch);
-	}else
-	{
-		printf("It is not printable");
-	}
-	return (0);
-}*/

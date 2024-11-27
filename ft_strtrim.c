@@ -38,15 +38,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[len] = '\0';
 	return (str);
 }
-/*
-#include <stdio.h>
-
-int	main()
-{
-	char	*arr = "aiueoIch habe viel Hungeraiueo";
-	char	*trimmed = ft_strtrim(arr, "aiueo");
-	printf("Original array: %s\n", arr);
-	printf("Trimmed array: %s\n", trimmed);
-	free(trimmed);
-	return 0;
-}*/
