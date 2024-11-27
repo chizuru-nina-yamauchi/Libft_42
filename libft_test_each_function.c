@@ -579,3 +579,33 @@ int	main()
 		printf("List is now empty and cleared.\n");
 	}
 }*/
+
+/*
+void	print_content(void *content)
+{
+	printf("%s\n", (char *)content);
+}
+
+#include <stdio.h>
+int	main()
+{
+	char *str1 = "Boa";
+	char *str2 = "Ace";
+	char *str3 = "LUffy";
+	
+	t_list *node1 = ft_lstnew(str1);
+	t_list *node2 = ft_lstnew(str2);
+	t_list *node3 = ft_lstnew(str3);
+	
+	node1->next = node2;
+	node2->next = node3;
+	
+	printf("List contents:\n");
+	ft_lstiter(node1, print_content);
+	
+	free(node1);
+	free(node2);
+	free(node3);
+	
+	return 0;
+}*/
