@@ -475,3 +475,21 @@ int	main()
 	printf("List size: %d\n", size);
 	return 0;
 }*/
+
+/*
+int	main()
+{
+	t_list	*node1 = ft_lstnew("First");
+	t_list	*node2 = ft_lstnew("Second");
+	t_list	*node3 = ft_lstnew("Third");
+	
+	node1->next = node2;
+	node2->next = node3;
+	
+	t_list	*last_node = ft_lstlast(node1);
+	
+	if(last_node)
+		printf("Last node content: %s\n", (char *)last_node->content);
+	return 0;
+}
+*/
