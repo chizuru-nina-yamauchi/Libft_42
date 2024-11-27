@@ -15,6 +15,7 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	int	digit;
+
 	if (n == INT_MIN)
 	{
 		write(fd, "-", 1);
@@ -32,5 +33,4 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	digit = (n % 10) + '0';
 	write(fd, &digit, 1);
-	
 }

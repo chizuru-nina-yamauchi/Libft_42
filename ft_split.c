@@ -16,7 +16,7 @@ static size_t	count_words(char const *s, char c)
 {
 	size_t	count;
 	size_t	in_word;
-	
+
 	count = 0;
 	in_word = 0;
 	while (*s)
@@ -26,13 +26,26 @@ static size_t	count_words(char const *s, char c)
 			in_word = 1;
 			count++;
 		}
-		else if(*s == c)
+		else if (*s == c)
 		{
 			in_word = 0;
 		}
 		s++;
 	}
 	return (count);
+}
+
+static void	free_split_result(char **result)
+{
+	size_t	i;
+
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
 }
 
 static char	*allocate_word(char const *start, size_t len)
@@ -46,20 +59,20 @@ static char	*allocate_word(char const *start, size_t len)
 	return (word);
 }
 
-static void	free_split_result(char **result)
+static size_t	calculate_word_length(char const *s, char c, size_t *j)
 {
-	size_t	i;
-	
-	i = 0;
-	while (result[i])
+	size_t	len;
+
+	len = 0;
+	while (s[*j] && s[*j] != c)
 	{
-		free(result[i]);
-		i++;
+		len++;
+		(*j)++;
 	}
-	free(result);
+	return (len);
 }
 
-static char	**process_and_split(char const *s, char c, char **result)
+static char	**process_and_allocate(char const *s, char c, char **result)
 {
 	size_t	len;
 	size_t	i;
@@ -67,41 +80,38 @@ static char	**process_and_split(char const *s, char c, char **result)
 
 	i = 0;
 	j = 0;
-	len = 0;
 	while (s[j])
 	{
-		if (s[j] != c)
-			len++;
-		if ((s[j] == c || s[j + 1] == '\0') && len > 0)
+		len = calculate_word_length(s, c, &j);
+		if (len > 0)
 		{
-			result[i] = allocate_word(s + j - len + (s[j + 1] == '\0'), len);
+			result[i] = allocate_word(s + j - len, len);
 			if (!result[i])
 			{
 				free_split_result(result);
 				return (NULL);
 			}
 			i++;
-			len = 0;
 		}
-		j++;
+		if (s[j] == c)
+			j++;
 	}
 	result[i] = NULL;
 	return (result);
-	
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	size_t	words;
-	
+
 	words = count_words(s, c);
 	if (!s)
 		return (NULL);
 	result = (char **)malloc((words + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	result = process_and_split(s, c, result);
+	result = process_and_allocate(s, c, result);
 	if (!result)
 		return (NULL);
 	return (result);
