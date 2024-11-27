@@ -35,6 +35,17 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
+static char	*allocate_word(char const *start, size_t len)
+{
+	char	*word;
+
+	word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	ft_strlcpy(word, start, len + 1);
+	return (word);
+}
+
 static void	free_split_result(char **result)
 {
 	size_t	i;
@@ -48,31 +59,7 @@ static void	free_split_result(char **result)
 	free(result);
 }
 
-static char	*allocate_word(char const *start, size_t len)
-{
-	char	*word;
-
-	word = (char *)malloc((len + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	ft_strlcpy(word, start, len + 1);
-	return (word);
-}
-
-static size_t	calculate_word_length(char const *s, char c, size_t *j)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[*j] && s[*j] != c)
-	{
-		len++;
-		(*j)++;
-	}
-	return (len);
-}
-
-static char	**process_and_allocate(char const *s, char c, char **result)
+static char	**process_and_split(char const *s, char c, char **result)
 {
 	size_t	len;
 	size_t	i;
@@ -80,21 +67,23 @@ static char	**process_and_allocate(char const *s, char c, char **result)
 
 	i = 0;
 	j = 0;
+	len = 0;
 	while (s[j])
 	{
-		len = calculate_word_length(s, c, &j);
-		if (len > 0)
+		if (s[j] != c)
+			len++;
+		if ((s[j] == c || s[j + 1] == '\0') && len > 0)
 		{
-			result[i] = allocate_word(s + j - len, len);
+			result[i] = allocate_word(s + j - len + (s[j + 1] == '\0'), len);
 			if (!result[i])
 			{
 				free_split_result(result);
 				return (NULL);
 			}
 			i++;
+			len = 0;
 		}
-		if (s[j] == c)
-			j++;
+		j++;
 	}
 	result[i] = NULL;
 	return (result);
@@ -111,7 +100,7 @@ char	**ft_split(char const *s, char c)
 	result = (char **)malloc((words + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	result = process_and_allocate(s, c, result);
+	result = process_and_split(s, c, result);
 	if (!result)
 		return (NULL);
 	return (result);
