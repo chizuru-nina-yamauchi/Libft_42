@@ -493,3 +493,52 @@ int	main()
 	return 0;
 }
 */
+
+/*
+void	print_list(t_list *lst)
+{
+	while (lst)
+	{
+		printf("%s -> ", (char *)lst->content);
+		lst = lst->next;
+	}
+	printf("NULL\n");
+}
+
+#include <stdio.h>
+int	main()
+{
+	t_list *node1 = ft_lstnew("First");
+	t_list *node2 = ft_lstnew("Second");
+	
+	node1->next = node2;
+	
+	printf("Before adding back:\n");
+	print_list(node1);
+	
+	t_list *new_node = ft_lstnew("Third");
+	
+	ft_lstadd_back(&node1, new_node);
+	
+	printf("After adding back:\n");
+	print_list(node1);
+	
+	return (0);
+}*/
+
+
+/*
+void	del_string(void *content)
+{
+	free(content);
+}
+
+#include <stdio.h>
+
+int	main()
+{
+	char	*str = ft_strdup("helloooooo!");
+	t_list *node = ft_lstnew(str);
+	ft_lstdelone(node, del_string);
+	return 0;
+}*/
