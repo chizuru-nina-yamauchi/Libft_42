@@ -404,4 +404,55 @@ int	main()
 	return 0;
 }*/
 
+/*
+#include <stdio.h>
+int	main()
+{
+	int	value_to_put = 10;
+	t_list	*node;
+	
+	node = ft_lstnew(&value_to_put);
+	if (node)
+	{	
+		printf("Node content: %d\n", *(int *)node->content);
+		printf("Node next: %p\n", (void *)node->next);
+		free(node);
+	}else
+	printf("Memory allocation fail");
+	return 0;
+}*/
 
+
+
+//ft_lstadd_front.c
+/*
+void	print_list(t_list *lst)
+{
+	while (lst)
+	{
+		printf("%s ->", (char *)lst->content);
+		lst = lst->next;
+	}
+	printf("NULL\n");
+}
+
+int	main()
+{
+	t_list *list = NULL;
+	t_list *node1 = ft_lstnew("Second");
+	t_list *node2 = ft_lstnew("Third");
+	
+	list = node1;
+	node1->next = node2;
+	
+	printf("Before adding front: \n");
+	print_list(list);
+	
+	t_list *new_node = ft_lstnew("First");
+	ft_lstadd_front(&list, new_node);
+	
+	printf("After adding front:\n");
+	print_list(list);
+	return 0;
+}
+*/
