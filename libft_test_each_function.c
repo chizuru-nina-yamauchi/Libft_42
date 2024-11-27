@@ -404,6 +404,8 @@ int	main()
 	return 0;
 }*/
 
+
+// LinkedList
 /*
 #include <stdio.h>
 int	main()
@@ -456,3 +458,20 @@ int	main()
 	return 0;
 }
 */
+
+/*
+#include <stdio.h>
+
+int	main()
+{
+	t_list	*node1 = ft_lstnew("First");
+	t_list	*node2 = ft_lstnew("Second");
+	t_list	*node3 = ft_lstnew("Third");
+
+	node1->next = node2;
+	node2->next = node3;
+	
+	int	size = ft_lstsize(node1);
+	printf("List size: %d\n", size);
+	return 0;
+}*/
