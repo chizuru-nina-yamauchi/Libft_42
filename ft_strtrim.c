@@ -17,7 +17,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 	size_t	start;
 	size_t	end;
-	size_t	len;
 
 	start = 0;
 	end = ft_strlen(s1) - 1;
@@ -25,16 +24,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	while (end > start && ft_strchr(set, s1[end]))
+	if (start == end + 1)
+		return (ft_strdup(""));
+	while (ft_strchr(set, s1[end]))
 		end--;
-	if (start <= end)
-		len = end - start + 1;
-	else
-		len = 0;
-	str = (char *)malloc((len + 1) * sizeof(char));
+	str = ft_substr(s1, start, end - start + 1);
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, &s1[start], len + 1);
-	str[len] = '\0';
 	return (str);
 }

@@ -12,96 +12,74 @@
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t	count;
-	size_t	in_word;
+	int	i;
+	int	count;
 
 	count = 0;
-	in_word = 0;
-	while (*s)
+	i = 0;
+	while (s && s[i])
 	{
-		if (*s != c && !in_word)
+		if (s[i] != c)
 		{
-			in_word = 1;
 			count++;
+			while (s[i] != c && s[i])
+				i++;
 		}
-		else if (*s == c)
-		{
-			in_word = 0;
-		}
-		s++;
+		else
+			i++;
 	}
 	return (count);
 }
 
-static char	*allocate_word(char const *start, size_t len)
+static int	word_size(char const *str, char c, int i)
 {
-	char	*word;
+	int	word_size;
 
-	word = (char *)malloc((len + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	ft_strlcpy(word, start, len + 1);
-	return (word);
-}
-
-static void	free_split_result(char **result)
-{
-	size_t	i;
-
-	i = 0;
-	while (result[i])
+	word_size = 0;
+	while (str[i] != c && str[i])
 	{
-		free(result[i]);
+		word_size++;
 		i++;
 	}
-	free(result);
+	return (word_size);
 }
 
-static char	**process_and_split(char const *s, char c, char **result)
+static void	free_split_result(char **result, int j)
 {
-	size_t	len;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	len = 0;
-	while (s[j])
+	while (j-- > 0)
 	{
-		if (s[j] != c)
-			len++;
-		if ((s[j] == c || s[j + 1] == '\0') && len > 0)
-		{
-			result[i] = allocate_word(s + j - len + (s[j + 1] == '\0'), len);
-			if (!result[i])
-			{
-				free_split_result(result);
-				return (NULL);
-			}
-			i++;
-			len = 0;
-		}
-		j++;
+		free(result[j]);
 	}
-	result[i] = NULL;
-	return (result);
+	free(result);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	size_t	words;
+	int		i;
+	int		size;
+	int		j;
 
-	words = count_words(s, c);
-	if (!s)
-		return (NULL);
-	result = (char **)malloc((words + 1) * sizeof(char *));
+	i = 0;
+	j = -1;
+	result = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
-	result = process_and_split(s, c, result);
-	if (!result)
-		return (NULL);
+	while (++j < count_words(s, c))
+	{
+		while (s[i] == c)
+			i++;
+		size = word_size(s, c, i);
+		result[j] = ft_substr(s, i, size);
+		if (!result[j])
+		{
+			free_split_result(result, j);
+			return (NULL);
+		}
+		i += size;
+	}
+	result[j] = 0;
 	return (result);
 }
