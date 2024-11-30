@@ -405,7 +405,22 @@ int	main()
 }*/
 
 
-// LinkedList
+/*
+#include <stdio.h>
+
+int	main()
+{
+	char	*s = "Raymond Redington";
+	unsigned int	start = 6;
+	size_t	length = 7;
+	char	*substring = ft_substr(s, start, length);
+	printf("The substring of '%s' from index %d for length %zu is: %s\n", s, start, length, substring);
+	
+	return 0;
+}*/
+
+
+// -------------------------------------------------- LinkedList
 /*
 #include <stdio.h>
 int	main()
